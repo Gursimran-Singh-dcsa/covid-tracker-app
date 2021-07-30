@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header, .footer {
+  max-height: 10vh;
+  font-size: larger;
+  padding: 12px;
+  color: aquamarine;
+  font-weight: bolder;
+  background-color: aliceblue;
+  width: 100vw;
+  text-align: center;
+}

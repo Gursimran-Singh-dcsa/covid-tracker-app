@@ -1,0 +1,37 @@
+.stats {
+  display: flex;
+  border: none;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  margin-top: 2vh;
+}
+.Badge {
+  width: 33vw;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.badgeNameValueAndToday {
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px dotted black;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.badgeCategories {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.badgeCategory {
+  display: flex;
+  flex-direction: column;
+};
+

@@ -1,6 +1,7 @@
 import {useSelector} from 'react-redux';
-import { Bar, Line } from 'react-chartjs-2';
-import {useState} from 'react';
+import { Line } from 'react-chartjs-2';
+import { useState, Fragment } from 'react';
+import VaccinationComponents from './vaccinationComponents';
 import './css/chart.css';
 
 const VaccinationTrends = (props) => {
@@ -88,24 +89,27 @@ const Charts = () => {
     })
   }
   return (
-    <div className="vaccinationTrends">
-      <div className="options">
-        {
-          ['Dose', 'Age'].map(val => {
-            return (
-              <button
-                key={val}
-                value={val}
-                className={`by${val} ${useBy['by'+val] ? 'active': ''}`}
-                onClick={handleByUse} >
-                  By {val}
-              </button>
-            )
-          })
-        }
-        <VaccinationTrends chartData={dataExtracter()} byAge={useBy.byAge} byDose={useBy.byDose} />
+    <Fragment>
+      <div className="vaccinationTrends">
+        <div className="options">
+          {
+            ['Dose', 'Age'].map(val => {
+              return (
+                <button
+                  key={val}
+                  value={val}
+                  className={`by${val} ${useBy['by'+val] ? 'active': ''}`}
+                  onClick={handleByUse} >
+                    By {val}
+                </button>
+              )
+            })
+          }
+          <VaccinationTrends chartData={dataExtracter()} byAge={useBy.byAge} byDose={useBy.byDose} />
+        </div>
       </div>
-    </div>
+      <VaccinationComponents />
+    </Fragment>
   )
 }
 

@@ -5,6 +5,7 @@
   justify-content: space-between;
   width: 100vw;
   margin-top: 2vh;
+  margin-bottom: 1vh;
 }
 .Badge {
   width: 33vw;
@@ -12,6 +13,7 @@
   border-radius: 10px;
   padding: 1%;
   display: flex;
+  background-color: blanchedalmond;
   flex-direction: column;
   justify-content: space-between;
 }

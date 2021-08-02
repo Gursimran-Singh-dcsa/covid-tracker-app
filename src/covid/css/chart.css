@@ -1,13 +1,14 @@
 .vaccinationTrends {
   display: flex;
   width: 100vw;
+  background-color: blanchedalmond;
   height: auto;
 }
 .vaccinationTrends canvas {
   width: 100vw;
 }
 .byDose, .byAge {
-  background-color: white;
+  background-color: blanchedalmond;
   border: none;
 }
 .active {

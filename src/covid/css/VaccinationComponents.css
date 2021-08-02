@@ -1,0 +1,25 @@
+.vaccineComponents {
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  width: 100vw;
+  margin-top: 1vh;
+  height: 50vw;
+  overflow-y: auto;
+}
+.doughnetCharts {
+  width: 25vw;
+  background-color: blanchedalmond;
+}
+.pieChart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25vw;
+  background-color: blanchedalmond;
+  margin-left: 1vw;
+}
+.table-responsive{
+  width: 45vw;
+  margin-left: 2vw;
+}

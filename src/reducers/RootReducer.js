@@ -2,22 +2,24 @@ import states from './indianStates';
 import districts from './indianDistricts'
 const initialState = {
   "states": states,
-  "selectedState": {name: "Select A State", value:0}, 
+  "selectedState": {name: "Select A State", value:''}, 
   "districts": [],
-  "selectedDistrict": {name: "Select A District", value: 0}
+  "selectedDistrict": {name: "Select A District", value: ''},
+  'dataAsPerStateAndDistrict': {}
 }
 
 const RootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'StateSelected':
       const selectedStateDistricts = getDistricts(action.value);
-      state = {...state, "selectedState": action.value, "districts": selectedStateDistricts, "selectedDistrict": {name: "Select A District", value: 0}};
-      console.log(state);
+      state = {...state, "selectedState": action.value, "districts": selectedStateDistricts, "selectedDistrict": {name: "Select A District", value: ''}};
       return state;
 
     case 'DistrictSelected':
       state = {...state, "selectedDistrict": action.value};
-      console.log(state);
+      return state;
+    case 'dataLoaded':
+      state = {...state, "dataAsPerStateAndDistrict": action.value};
       return state;
   
     default:

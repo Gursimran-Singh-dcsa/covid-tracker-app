@@ -1,22 +1,24 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import APIEndPoints from "./constants";
 import StatBadge from "./statBadge";
 
 const Stats = () => {
+  const {states, selectedState, selectedDistrict, districts} = useSelector(state => state);
+  const dispatch = useDispatch();
   const [stats, setStats] = useState({
     "getPublicReports" : {},
     "loading": true,
     "error" : false,
   });
-  let getPublicReports = {};
-  let getVacPublicReports = {};
 
   const fetchApis = () => {
     Object.keys(APIEndPoints).forEach((endpoint) => {
-      fetch(APIEndPoints[endpoint])
+      fetch(`${APIEndPoints[endpoint]}?state_id=${selectedState.value}&district_id=${selectedDistrict.value}&date=${new Date().toISOString().slice(0, 10)}`)
       .then(res => res.json())
       .then(data => {
         setStats(stats => {return {...stats, "loading": false, "getPublicReports" : data, "error" : false}});
+        dispatch({'type': 'dataLoaded', 'value': data})
         },
         error => {
           setStats(stats => {return {...stats, "loading": false, "error" : true}});
@@ -24,7 +26,7 @@ const Stats = () => {
       )
     })
   }
-  useEffect(fetchApis, []);
+  useEffect(fetchApis, [selectedState, selectedDistrict]);
   if (stats.loading) {
     return (
       <div className="stats">
@@ -41,6 +43,7 @@ const Stats = () => {
   }
   return (
     <div className="stats">
+      {'hr'==selectedState ? <span></span>: ''}
       <StatBadge badgeName="Total Vaccination Doses"
                  BadgeValue={stats.getPublicReports.topBlock.vaccination.total}
                  today={stats.getPublicReports.topBlock.vaccination.today}

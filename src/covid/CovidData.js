@@ -34,7 +34,7 @@ const CovidData = () => {
     if ('state' === type) {
       dispatch({type: 'StateSelected', value : {name: name, value: val}});
     }
-    if ('state' === type) {
+    if ('district' === type) {
       dispatch({type: 'DistrictSelected', value : {name: name, value: val}});
     }
   }

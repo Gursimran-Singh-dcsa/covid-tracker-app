@@ -2,6 +2,7 @@ import {useSelector} from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import { useState, Fragment } from 'react';
 import VaccinationComponents from './vaccinationComponents';
+import Socialtrends from './socialtrends';
 import './css/chart.css';
 
 const VaccinationTrends = (props) => {
@@ -109,6 +110,7 @@ const Charts = () => {
         </div>
       </div>
       <VaccinationComponents />
+      <Socialtrends />
     </Fragment>
   )
 }

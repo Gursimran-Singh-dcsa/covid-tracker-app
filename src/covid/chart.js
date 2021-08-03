@@ -4,6 +4,7 @@ import { useState, Fragment } from 'react';
 import VaccinationComponents from './vaccinationComponents';
 import Socialtrends from './socialtrends';
 import Statetrends from './statetrends';
+import Registrationtrends from './registrationtrends'
 import './css/chart.css';
 
 const VaccinationTrends = (props) => {
@@ -41,7 +42,7 @@ const VaccinationTrends = (props) => {
 }
 
 const Charts = () => {
-  const {dataAsPerStateAndDistrict} = useSelector(state => state);
+  const {dataAsPerStateAndDistrict, selectedState} = useSelector(state => state);
   const [useBy, setUseBy] = useState(
     {
       "byAge": true,
@@ -113,6 +114,7 @@ const Charts = () => {
       <VaccinationComponents />
       <Socialtrends />
       <Statetrends />
+      { false && !selectedState.value && <Registrationtrends />}
     </Fragment>
   )
 }

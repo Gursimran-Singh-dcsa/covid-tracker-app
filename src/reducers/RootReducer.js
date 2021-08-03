@@ -8,6 +8,7 @@ const initialState = {
   'dataAsPerStateAndDistrict': {},
   'stateWiseData': [],
   'districtWiseData': [],
+  'regData': []
 }
 
 const RootReducer = (state = initialState, action) => {
@@ -33,6 +34,10 @@ const RootReducer = (state = initialState, action) => {
     case 'districtDataAdded':
       state.districtWiseData = {...state.districtWiseData, [action.district_id]:[action.data]};
       state = {...state, ...[state.districtWiseData]}
+      return state;
+
+    case 'setRegData':
+      state = {...state, 'regData': action.value}
       return state;
 
     default:

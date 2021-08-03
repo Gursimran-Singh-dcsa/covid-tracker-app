@@ -71,7 +71,6 @@ const PieChart = (props) => {
 
 const DistrictTable = () => {
   const {dataAsPerStateAndDistrict, selectedState, districts, stateWiseData, districtWiseData} = useSelector(state => state);
-  // districtWiseData = districtWiseData || [];
   const dispatch = useDispatch();
 
   const getAllStatesData = () => {
@@ -173,7 +172,7 @@ const DistrictTable = () => {
         {
           columnData.map((value, index) => {
             return (
-              <tr key={value.total}>
+              <tr key={value.total+value.name}>
                 <td key={value.name}>{value.name}</td>
                 <td key={value.today}>{value.today}</td>
                 <td key={value.total}>{value.total}</td>

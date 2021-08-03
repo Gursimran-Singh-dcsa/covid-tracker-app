@@ -7,7 +7,7 @@
 .vaccinationTrends canvas {
   width: 100vw;
 }
-.byDose, .byAge {
+.byDose, .byAge, .bylast30days, .byAll, .bytoday {
   background-color: blanchedalmond;
   border: none;
 }

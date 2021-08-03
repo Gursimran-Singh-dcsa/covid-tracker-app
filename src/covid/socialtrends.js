@@ -72,12 +72,9 @@ const RuralAndUrban = (props) => {
       }
     ]
   };
-  const options = {
-  }
-  console.log(dataset)
   return (
     <div className="aefi">
-        <Line data={dataset} options={options} />
+        <Line data={dataset} options={{}} />
     </div>
   )
 }

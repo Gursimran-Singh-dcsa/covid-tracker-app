@@ -5,6 +5,7 @@ import { useTable } from 'react-table';
 import states from '../reducers/indianStates';
 import APIEndPoints from "./constants";
 import { Table } from 'react-bootstrap';
+import { getDistrictNameFromId, getStateNameFromId } from "../utilities/getNames";
 import './css/VaccinationComponents.css';
 
 const SemiDoughnet = (props) => {
@@ -117,31 +118,13 @@ const DistrictTable = () => {
     getStateWiseAndDistrictWiseData();
   }, [selectedState]);
 
-  const getStateNameFromId = (id) => {
-    const data = states[id-1];
-    if (undefined !== data) {
-      return data.name
-    }
-    return 'aa';
-  }
-
-  const getDistrictNameFromId = (id) => {
-    let name = '';
-    districts.forEach(district => {
-      if (district.district_id == id) {
-        name = district.district_name;
-        return;
-      }
-    });
-    return name;
-  }
   const getArrangedData = () => {
     const dataVals = [];
     if (!selectedState.value) {
       Object.keys(stateWiseData).forEach(stateData => {
         dataVals.push(
           {
-            name: getStateNameFromId(stateData),
+            name: getStateNameFromId(states, stateData),
             today: stateWiseData[stateData][0].topBlock.vaccination.today,
             total: stateWiseData[stateData][0].topBlock.vaccination.total
           }
@@ -151,7 +134,7 @@ const DistrictTable = () => {
         Object.keys(districtWiseData).forEach(district_id => {
           dataVals.push(
             {
-              name: getDistrictNameFromId(district_id),
+              name: getDistrictNameFromId(districts, district_id),
               today: districtWiseData[district_id][0].topBlock.vaccination.today,
               total: districtWiseData[district_id][0].topBlock.vaccination.total
             }
@@ -190,7 +173,7 @@ const DistrictTable = () => {
         {
           columnData.map((value, index) => {
             return (
-              <tr>
+              <tr key={value.total}>
                 <td key={value.name}>{value.name}</td>
                 <td key={value.today}>{value.today}</td>
                 <td key={value.total}>{value.total}</td>

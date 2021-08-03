@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { useState, Fragment } from 'react';
 import VaccinationComponents from './vaccinationComponents';
 import Socialtrends from './socialtrends';
+import Statetrends from './statetrends';
 import './css/chart.css';
 
 const VaccinationTrends = (props) => {
@@ -111,6 +112,7 @@ const Charts = () => {
       </div>
       <VaccinationComponents />
       <Socialtrends />
+      <Statetrends />
     </Fragment>
   )
 }

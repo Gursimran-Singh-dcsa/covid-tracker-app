@@ -46,7 +46,6 @@ const Statetrends = () => {
       },
     ],
   };
-  console.log(dataSet);
   return (
     <div className="statestrend">
       <Bar data={dataSet} options={{}} />
